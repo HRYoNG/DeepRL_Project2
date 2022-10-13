@@ -1,4 +1,4 @@
-#Deep Reinforcement Project #2 - Udacity DeepRL Nanodegree course
+# Deep Reinforcement Project #2 - Udacity DeepRL Nanodegree course
 
 1. Project Details
    For this project, you will work with the Reacher environment in which a double-jointed arm can move to target locations. 
