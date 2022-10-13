@@ -9,7 +9,7 @@
 
    - State Space : The state space has 33 dimensions and contains the agent's position, rotation, velocity, and angular velocities of the arm.
 
-   - Action Space : Each action is a vector with four numbers, corresponding to torque applicable to two joints
+   - Vector Action Space (continous) : Each action is a vector with four numbers ranging from -1 to +1, corresponding to torque applicable to two joints.
 
    - Goal : Environment is solved when the average of average scores over 100 episodes is at least +30.
             The average score means the average of each 20 agents' scores in one episode.
