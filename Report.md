@@ -17,20 +17,20 @@ Several amendments and adjustments below were made in order to get converging re
 I amended the code to make 20 agents able to share a replay buffer and update the actor and critic networks 10 times after every 20 timesteps.
 The function Step() decides to learn accoring to the parameter UPDATE_CYCLE = 20, SAMPLE_NUM = 10 in ddpg_agent.py.
 
-Second, gradient clipping was applied when training the critic network. (Agent.learn() in ddpg_agent.py)
+Gradient clipping was applied when training the critic network. (Agent.learn() in ddpg_agent.py)
 
     torch.nn.utils.clip_grad_norm_(self.critic_local.parameters(), 1)
     
 With these amendments I could verify that this DDPG code runs in the environment of the project.
 
-However I couldn't get successful learning result. The plot below was the first result. 
+However the learning result wasn't successful.
 
 ![image](https://user-images.githubusercontent.com/55370676/195717141-15e0b087-d59e-40a4-8696-b548f12422fd.png)
 
 
 ### 2nd. Attempt 
 #### Batch Normalization
-I tried to modify Batch Normalization, which led to get little bit higher scores than attempt 1. It still didn't work well. Learning was too slow and not successful.
+I tried to add Batch Normalization layer to get better learning performance. 
 Normalizing Layers were added in both actor and critic network. (line 40, line 73 in model.py)
 
     self.bn1 = nn.BatchNorm1d(fc1_units)
@@ -41,6 +41,8 @@ Normalizing Layers were added in both actor and critic network. (line 40, line 7
         x = F.relu(self.fc2(x))
         return F.tanh(self.fc3(x))
     
+It seemed that the agents could get little bit higher scores than attempt 1. 
+It still didn't work well. Learning was too slow and not successful.
 ![image](https://user-images.githubusercontent.com/55370676/195717347-4565260b-5c11-4343-8548-e7ab20a30201.png)
 
 
@@ -62,7 +64,7 @@ So, I tried to adjust exploitation and exploration ratio by applying an epsilon 
 Added epsilon parameter decreased the noise over time as the agent gains more experience.
 Then it started to converge and get higher scores as time goes by.
 
-Environment was solved as you can see in the plot below.
+The environment was solved as you can see in the plot below.
 
 # Plot of Rewards
 
@@ -73,7 +75,7 @@ The detail process is written in "4. ② Train the Agent with DDPG" of <Continuo
 
 
 # Ideas for Future Work
-Advanced algorithms such as Trust Region Policy Optimization (TRPO), Truncated Natural Policy Gradient (TNPG) can achieve better performance.([Benchmark](https://arxiv.org/abs/1604.06778))
+Advanced algorithms such as Trust Region Policy Optimization (TRPO), Truncated Natural Policy Gradient (TNPG) can achieve better performance according to [Benchmark](https://arxiv.org/abs/1604.06778).
 
 Distributed Distributional Deterministic Policy Gradients ([D4PG](https://openreview.net/forum?id=SyZipzbCb)) algorithm as another method for adapting DDPG can be used for this continuous control project.
 
