@@ -40,4 +40,4 @@
    - Run the codes below '4. It's Your Turn!' in 'Navigation.ipynb' to check the trained agent.
    - 'ddpg_agent.py','model.py', 'checkpoint_actor.pth' and 'checkpoint_critic.pth' should be included in the same project with 'Continuous_Control.ipynb'.
    - Experiment results of the trained model was already recorded in the notebook files.
-  
+   - checkpoint_actor.pth' and 'checkpoint_critic.pth contain trained networks' weights.
