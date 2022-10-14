@@ -66,6 +66,24 @@ Then it started to converge and get higher scores as time goes by.
 
 The environment was solved as you can see in the plot below.
 
+
+### Hyperparameters
+
+    BUFFER_SIZE = int(1e5)  # replay buffer size
+    BATCH_SIZE = 128        # minibatch size
+    GAMMA = 0.99            # discount factor
+    TAU = 1e-3              # for soft update of target parameters
+    LR_ACTOR = 1e-3         # learning rate of the actor 
+    LR_CRITIC = 1e-3        # learning rate of the critic
+    WEIGHT_DECAY = 0        # L2 weight decay
+    UPDATE_CYCLE = 20       # the (local) actor and critic networks are updated 20 times in a row (one for each agent)
+    SAMPLE_NUM = 10         # using 10 different samples from the replay buffer
+    EPS_START = 1.0         # parameters for Higher Exploitation explained '3rd attempt'
+    EPS_END = 0.05          # parameters for Higher Exploitation explained '3rd attempt'
+    EPS_DECAY_RATE = 1e-6   # parameters for Higher Exploitation explained '3rd attempt'
+
+
+
 # Plot of Rewards
 
 ![image](https://user-images.githubusercontent.com/55370676/195745794-e02640f7-4b48-49f1-85d4-0b07af199a40.png)
