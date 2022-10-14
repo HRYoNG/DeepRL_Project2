@@ -12,7 +12,7 @@ Several amendments and adjustments below were made in order to get converging re
 
 ### 1st. Attempt
 
-#### Relay buffer and Gradient Clipping
+#### Replay buffer and Gradient Clipping
 
 I amended the code to make 20 agents able to share a replay buffer and update the actor and critic networks 10 times after every 20 timesteps.
 The function Step() decides to learn accoring to the parameter UPDATE_CYCLE = 20, SAMPLE_NUM = 10 in ddpg_agent.py.
